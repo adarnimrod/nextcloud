@@ -1,22 +1,23 @@
 galaxy_info:
   author: Nimrod Adar
-  description: An example Ansible role
+  description: Provision Nextcloud
   company: Shore technologies
   license: MIT
   min_ansible_version: 2.3
   platforms:
-  - name: OpenBSD
-    versions:
-    - 6.0
   - name: Ubuntu
     versions:
     - xenial
     - trusty
-    - precise
   - name: Debian
     versions:
     - stretch
     - jessie
-    - wheezy
-  galaxy_tags: [ ansible ]
-dependencies: []
+  galaxy_tags: [ nextcloud, owncloud ]
+dependencies:
+- name: mod-php
+  src: adarnimrod.mod-php
+  when: ansible_distribution_release in ['trusty', 'jessie']
+- name: mod-php7
+  src: adarnimrod.mod-php7
+  when: ansible_distribution_release in ['xenial', 'stretch']
