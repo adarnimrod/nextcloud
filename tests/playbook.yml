@@ -19,4 +19,6 @@
 
 - hosts: all
   roles:
+    - role: mysql
+      mysql_admin_password: admin
     - role: nextcloud
